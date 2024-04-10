@@ -47,7 +47,7 @@ columns:
     default_function:
     collation:
     comment:
-  posts:
+  bings:
   - !ruby/object:ActiveRecord::ConnectionAdapters::MySQL::Column
     name: id
     sql_type_metadata: !ruby/object:ActiveRecord::ConnectionAdapters::MySQL::TypeMetadata
@@ -72,7 +72,7 @@ columns:
     collation: utf8mb4_0900_ai_ci
     comment:
   - !ruby/object:ActiveRecord::ConnectionAdapters::MySQL::Column
-    name: content
+    name: body
     sql_type_metadata: !ruby/object:ActiveRecord::ConnectionAdapters::MySQL::TypeMetadata
       delegate_dc_obj: !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
         sql_type: text
@@ -99,17 +99,17 @@ columns:
     comment:
 primary_keys:
   ar_internal_metadata: key
-  posts: id
+  bings: id
   schema_migrations: version
 data_sources:
   ar_internal_metadata: true
-  posts: true
+  bings: true
   schema_migrations: true
 indexes:
   ar_internal_metadata: []
-  posts: []
+  bings: []
   schema_migrations: []
-version: 20240409122245
+version: 20240410071230
 database_version: !ruby/object:ActiveRecord::ConnectionAdapters::AbstractAdapter::Version
   version:
   - 8

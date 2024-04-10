@@ -1,0 +1,2 @@
+class Bing < FoobazRecord
+end
