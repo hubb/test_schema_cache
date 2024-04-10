@@ -5,21 +5,42 @@
 #   gem "sqlite3"
 #
 default: &default
-  adapter: sqlite3
+  adapter: trilogy
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
+  url: <%= ENV["DATABASE_URL"] %>
 
 development:
-  <<: *default
-  database: storage/development.sqlite3
+  foobar:
+    <<: *default
+    database: test_schema_cache_app_foobar_development
+    schema_dump: foobar_development.rb
+    schema_cache_path: "db/foobar_schema_cache_development.yml"
+    migrations_paths: db/migrate/foobar
+  foobaz:
+    <<: *default
+    database: test_schema_cache_app_foobaz_development
+    schema_dump: foobaz_development.rb
+    schema_cache_path: "db/foobaz_schema_cache_development.yml"
+    migrations_paths: db/migrate/foobaz
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: storage/test.sqlite3
+  foobar:
+    <<: *default
+    database: test_schema_cache_app_foobar_test
+    schema_dump: foobar_test.rb
+    schema_cache_path: "db/foobar_schema_cache_test.yml"
+    migrations_paths: db/migrate/foobar
+  foobaz:
+    <<: *default
+    database: test_schema_cache_app_foobaz_test
+    schema_dump: foobaz_test.rb
+    schema_cache_path: "db/foobaz_schema_cache_test.yml"
+    migrations_paths: db/migrate/foobaz
 
 production:
   <<: *default
-  database: storage/production.sqlite3
+  database: test_schema_cache_app_production
