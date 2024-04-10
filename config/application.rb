@@ -23,5 +23,13 @@ module TestSchemaCache
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Explicitly disable the use of schema cache dumps.
+    config.active_record.use_schema_cache_dump = ENV.fetch("SCHEMA_CACHE_DUMP", "false") == "true"
+    # Lazily load the schema cache
+    config.active_record.lazily_load_schema_cache = ENV.fetch("LAZILY_LOAD_SCHEMA_CACHE", "false") == "true"
+    config.active_record.schema_cache_ignored_tables = [
+      /(^_vt_.*)|(^_.*_gho$)|(^_.*_ghc$)|(^_.*_old$)|(.*_del$)|(^lhm.*)|(^_.*_vrepl$)/, # https://rubular.com/r/DXyf7vkzLZ8qyb
+    ]
   end
 end
